@@ -4,6 +4,7 @@ class Nodo:
         self.izquierda = None
         self.derecha = None
 
+<<<<<<< HEAD
 class ArbolBinario:
     def __init__(self):
         self.raiz = None
@@ -25,6 +26,45 @@ class ArbolBinario:
                 nodo.derecha = Nodo(valor)
             else:
                 self._insertar_recursivo(nodo.derecha, valor)
+=======
+class ArbolExpresion:
+    def __init__(self):
+        self.raiz = None
+
+    def construir_desde_postfija(self, expresion):
+        pila = []
+        operadores = {'+', '-', '*', '/'}
+
+        for token in expresion.split():
+            if token not in operadores:
+                nodo = Nodo(token)
+            else:
+                nodo = Nodo(token)
+                nodo.derecha = pila.pop()
+                nodo.izquierda = pila.pop()
+            
+            pila.append(nodo)
+
+        self.raiz = pila.pop()
+
+    def evaluar(self, nodo):
+        if nodo is None:
+            return 0
+        if nodo.izquierda is None and nodo.derecha is None:
+            return float(nodo.valor)
+
+        izquierda_valor = self.evaluar(nodo.izquierda)
+        derecha_valor = self.evaluar(nodo.derecha)
+
+        if nodo.valor == '+':
+            return izquierda_valor + derecha_valor
+        elif nodo.valor == '-':
+            return izquierda_valor - derecha_valor
+        elif nodo.valor == '*':
+            return izquierda_valor * derecha_valor
+        elif nodo.valor == '/':
+            return izquierda_valor / derecha_valor
+>>>>>>> a344f8b (New)
 
     def preorden(self, nodo):
         if nodo:
@@ -44,6 +84,7 @@ class ArbolBinario:
             self.postorden(nodo.derecha)
             print(nodo.valor, end=" ")
 
+<<<<<<< HEAD
 
 def evaluar_arbol(nodo):
     if nodo is None:
@@ -86,3 +127,22 @@ arbol.inorden(arbol.raiz)
 print("\nRecorrido Postorden:")
 arbol.postorden(arbol.raiz)
 print("\nResultado de la expresion (3 + 5) * 2:", resultado)
+=======
+# ---- Entrada desde consola ----
+expresion_postfija = input("Ingrese una expresion en notacion postfija (ej. '3 5 + 10 2 - *'): ")
+
+# Creando y evaluando el arbol de expresion
+arbol = ArbolExpresion()
+arbol.construir_desde_postfija(expresion_postfija)
+
+print("\nRecorridos del Arbol:")
+print("Preorden: ", end="")
+arbol.preorden(arbol.raiz)
+print("\nInorden: ", end="")
+arbol.inorden(arbol.raiz)
+print("\nPostorden: ", end="")
+arbol.postorden(arbol.raiz)
+
+resultado = arbol.evaluar(arbol.raiz)
+print("\n\nResultado de la expresion:", resultado)
+>>>>>>> a344f8b (New)
