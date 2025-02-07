@@ -18,6 +18,7 @@ Este proyecto implementa un árbol binario en Python para la evaluación de expr
 - Python 3.x
 
 ## Uso
+
 1. Introduce la expresión aritmética a evaluar.
 2. Se construye el árbol binario de expresión.
 3. Se muestran los recorridos del árbol.

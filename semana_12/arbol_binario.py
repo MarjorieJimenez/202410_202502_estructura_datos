@@ -129,7 +129,7 @@ arbol.postorden(arbol.raiz)
 print("\nResultado de la expresion (3 + 5) * 2:", resultado)
 =======
 # ---- Entrada desde consola ----
-expresion_postfija = input("Ingrese una expresion en notacion postfija (ej. '3 5 + 10 2 - *'): ")
+expresion_postfija = input("Ingrese expresion en notacion postfija (ej. '3 5 + 10 2 - *'): ")
 
 # Creando y evaluando el arbol de expresion
 arbol = ArbolExpresion()
